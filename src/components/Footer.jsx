@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <footer className="text-gray-600 body-font">
+      <footer className="bg-white text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap md:text-left text-center order-first">
             <div className="lg:w-1/5 md:w-1/2 w-full px-4">
@@ -13,7 +13,7 @@ const Footer = () => {
               </p>
             </div>
 
-            <div className="lg:w-1/5 md:w-1/2 w-full px-4">
+            <div className="lg:w-1/5 md:w-1/2 w-full px-4 m-auto">
               <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
                 CATEGORIES
               </h2>
@@ -41,7 +41,7 @@ const Footer = () => {
               </nav>
             </div>
 
-            <div className="lg:w-1/5 md:w-1/2 w-full px-4">
+            <div className="lg:w-1/5 md:w-1/2 w-full px-4 m-auto">
               <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
                 Privacy & Terms
               </h2>
@@ -69,7 +69,7 @@ const Footer = () => {
               </nav>
             </div>
 
-            <div className="lg:w-1/5 md:w-1/2 w-full px-4">
+            <div className="lg:w-1/5 md:w-1/2 w-full px-4 m-auto">
               <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
               Quick Links
               </h2>
@@ -107,7 +107,7 @@ const Footer = () => {
                     <div className=" ">
                       <input
                         type="email"
-                        className="bg-white text-start border border-gray-300 text-gray-900 text-sm rounded-lg block w-full py-2 px-5 shadow-xl shadow-gray-300"
+                        className="bg-white text-start border border-gray-300 text-gray-900 text-sm rounded-lg block w-full py-2  shadow-xl shadow-gray-300"
                         placeholder="Enter Your Email"
                       />
                     </div>
@@ -117,6 +117,7 @@ const Footer = () => {
                       Submit
                     </button>
                   </form>
+                  
                 </div>
               </div>
             </div>

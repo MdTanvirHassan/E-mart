@@ -8,7 +8,7 @@ const Navbar = () => {
   const [nav, setNav] = useState(false);
   const [shadow, setShadow] = useState(false);
   const [navBg, setNavBg] = useState('transparent');
-  const [linkColor, setLinkColor] = useState('#1f2937');
+  const [linkColor, setLinkColor] = useState('#FFFFFF');
   // const [position, setPosition] = useState('fixed')
 
   const handleNav = () => {
@@ -19,7 +19,8 @@ const Navbar = () => {
     const handleShadow = () => {
       if (window.scrollY >= 90) {
         setShadow(true);
-        setNavBg('#000000');
+        setNavBg('#FEFEFE');
+        setLinkColor("#FFFFFF")
       } else {
         setShadow(false);
         setNavBg('transparent');
@@ -52,22 +53,20 @@ const Navbar = () => {
         <div>
           <ul style={{ color: `${linkColor}` }} className="hidden lg:flex">
             
-            <li className="ml-7 text-black navHover">
+            <li className="ml-7 text-purple-600 font-bold navHover">
               <a href="/">Home</a>
             </li>
-            <li className="ml-7 text-black navHover">
+            <li className="ml-7 text-purple-600 font-bold navHover">
               <a href="/#about">About</a>
             </li>
-            <li className="ml-7 text-black navHover">
+            {/* <li className="ml-7 text-purple-600 font-bold navHover">
               <a href="/#skills">Skills</a>
+            </li> */}
+            <li className="ml-7 text-purple-600 font-bold navHover">
+              <a href="/#products">Products</a>
             </li>
-            <li className="ml-7 text-black navHover">
-              <a href="/#projects">Projects</a>
-            </li>
-            <li className="ml-7 text-black navHover">
-              <a href="/resume">Resume</a>
-            </li>
-            <li className="ml-7 text-black navHover">
+            
+            <li className="ml-7 text-purple-600 font-bold navHover">
               <a href="/#contact">Contact</a>
             </li>
           </ul>
@@ -76,9 +75,17 @@ const Navbar = () => {
             style={{ color: `${linkColor}` }}
             onClick={handleNav}
             className="lg:hidden mx-2 rounded-full bg-gray-600 p-2">
-            <AiOutlineMenu size={25} className="text-white" />
+            <AiOutlineMenu size={25} className="text-purple-600 font-bold" />
           </div>
         </div>
+            <div className="">
+                <ul className='flex space-x-2 text-purple-600 font-bold'>
+                    <li>Search</li>
+                    <li>Login</li>
+                    <li>Register</li>
+                    <li>Cart</li>
+                </ul>
+            </div>
       </div>
 
       {/* Mobile Menu */}
