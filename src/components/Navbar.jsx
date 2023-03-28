@@ -1,14 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { AiOutlineClose,  AiOutlineMenu } from 'react-icons/ai';
+import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import {
+  AiOutlineClose,
+  AiOutlineMenu,
+  AiOutlineShoppingCart,
+} from "react-icons/ai";
 // import { FaFacebook, FaGithub, FaaedinIn } from 'react-icons/fa';
-// import { BsWhatsapp } from 'react-icons/bs';
+import { BiSearchAlt } from "react-icons/bi";
+import { BsPersonCircle } from "react-icons/bs";
+import { FiLogIn } from "react-icons/fi";
 //import NavLogo from '../public/assets/navLogo3.png'
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const [shadow, setShadow] = useState(false);
-  const [navBg, setNavBg] = useState('transparent');
-  const [linkColor, setLinkColor] = useState('#FFFFFF');
+  const [navBg, setNavBg] = useState("transparent");
+  const [linkColor, setLinkColor] = useState("#FFFFFF");
   // const [position, setPosition] = useState('fixed')
 
   const handleNav = () => {
@@ -19,14 +26,14 @@ const Navbar = () => {
     const handleShadow = () => {
       if (window.scrollY >= 90) {
         setShadow(true);
-        setNavBg('#FEFEFE');
-        setLinkColor("#FFFFFF")
+        setNavBg("#FEFEFE");
+        setLinkColor("#FFFFFF");
       } else {
         setShadow(false);
-        setNavBg('transparent');
+        setNavBg("transparent");
       }
     };
-    window.addEventListener('scroll', handleShadow);
+    window.addEventListener("scroll", handleShadow);
   }, []);
 
   return (
@@ -38,7 +45,7 @@ const Navbar = () => {
           : "fixed w-full h-20 z-[100]"
       }>
       <div className="flex justify-between items-center w-full h-full px-2 2xl:px-16">
-        <a href="/">
+        <NavLink to="/">
           <div className="">
             {/* <img
               //src={NavLogo}
@@ -47,27 +54,24 @@ const Navbar = () => {
               height="50"
               className="cursor-pointer"
             /> */}
-            <h1 className='text-3xl'>E-mart</h1>
+            <h1 className="text-3xl">E-mart</h1>
           </div>
-        </a>
+        </NavLink>
         <div>
           <ul style={{ color: `${linkColor}` }} className="hidden lg:flex">
-            
             <li className="ml-7 text-purple-600 font-bold navHover">
-              <a href="/">Home</a>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li className="ml-7 text-purple-600 font-bold navHover">
-              <a href="/#about">About</a>
+              <NavLink to="/about">About</NavLink>
             </li>
-            {/* <li className="ml-7 text-purple-600 font-bold navHover">
-              <a href="/#skills">Skills</a>
-            </li> */}
+
             <li className="ml-7 text-purple-600 font-bold navHover">
-              <a href="/#products">Products</a>
+              <NavLink to="/products">Products</NavLink>
             </li>
-            
+
             <li className="ml-7 text-purple-600 font-bold navHover">
-              <a href="/#contact">Contact</a>
+              <NavLink to="/contact">Contact</NavLink>
             </li>
           </ul>
           {/* Hamburger Icon */}
@@ -78,14 +82,29 @@ const Navbar = () => {
             <AiOutlineMenu size={25} className="text-purple-600 font-bold" />
           </div>
         </div>
-            <div className="">
-                <ul className='flex space-x-2 text-purple-600 font-bold'>
-                    <li>Search</li>
-                    <li>Login</li>
-                    <li>Register</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
+        <div className="flex space-x-4 text-purple-600 font-bold">
+          <div className="m-auto">
+            <BiSearchAlt className="text-2xl" />
+          </div>
+          <div >
+            <NavLink to="/login" className="flex space-x-2 border px-3 py-2 hover:bg-black hover:text-white rounded-md">
+              <FiLogIn className="text-2xl" />
+              <span>Login</span>
+            </NavLink>{" "}
+          </div>
+          <div >
+            <NavLink to="/register " className="flex space-x-2 border px-3 py-2 hover:bg-black hover:text-white rounded-md ">
+              <BsPersonCircle className="text-2xl" />
+              <span>Register</span>
+            </NavLink>
+          </div>
+          <div >
+            <NavLink to="/cart" className="flex space-x-2 border px-3 py-2 hover:bg-black hover:text-white rounded-md ">
+              <AiOutlineShoppingCart className="text-2xl" />
+              <span>Cart</span>
+            </NavLink>{" "}
+          </div>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -103,58 +122,44 @@ const Navbar = () => {
           }>
           <div>
             <div className="flex w-full items-center justify-between">
-              <a href="/">
+              <NavLink to="/">
                 <>
                   {/* <img src={NavLogo} width="87" height="35" alt="/" /> */}
-                 <h1 className='text-3xl'>E-mart</h1> 
+                  <h1 className="text-3xl">E-mart</h1>
                 </>
-              </a>
+              </NavLink>
               <div
                 onClick={handleNav}
                 className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer ">
                 <AiOutlineClose className="text-black" />
               </div>
             </div>
-            <div className="border-b border-gray-300 my-2">
-              <p className="w-[85%] md:w-[90%] py-4 text-gray-500">
-                Let&#39;s build something legendary together
-              </p>
-            </div>
           </div>
           <div className="py-2 flex flex-col">
             <ul className="uppercase">
-              <a href="/">
+              <NavLink to="/">
                 <li onClick={() => setNav(false)} className="py-2 text-sm">
                   Home
                 </li>
-              </a>
-              <a href="/#about">
+              </NavLink>
+              <NavLink to="/#about">
                 <li onClick={() => setNav(false)} className="py-2 text-sm">
                   About
                 </li>
-              </a>
-              <a href="/#skills">
-                <li onClick={() => setNav(false)} className="py-2 text-sm">
-                  Skills
-                </li>
-              </a>
-              <a href="/#projects">
+              </NavLink>
+              
+              <NavLink to="/#projects">
                 <li onClick={() => setNav(false)} className="py-2 text-sm">
                   Projects
                 </li>
-              </a>
-              <a href="/resume">
-                <li onClick={() => setNav(false)} className="py-2 text-sm">
-                  Resume
-                </li>
-              </a>
-              <a href="/#contact">
+              </NavLink>
+              
+              <NavLink to="/#contact">
                 <li onClick={() => setNav(false)} className="py-2 text-sm">
                   Contact
                 </li>
-              </a>
+              </NavLink>
             </ul>
-            
           </div>
         </div>
       </div>
