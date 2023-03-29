@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -75,9 +76,9 @@ const Footer = () => {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <a href="/#" className="text-gray-600 hover:text-gray-800">
+                  <NavLink to="/contact" className="text-gray-600 hover:text-gray-800">
                     Contact Us
-                  </a>
+                  </NavLink>
                 </li>
                 <li>
                   <a href="/#" className="text-gray-600 hover:text-gray-800">
