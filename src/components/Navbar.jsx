@@ -60,14 +60,14 @@ const Navbar = () => {
         <div>
           <ul style={{ color: `${linkColor}` }} className="hidden lg:flex">
             <li className="ml-7 text-purple-600 font-bold navHover">
-              <NavLink to="/">Home</NavLink>
+              <NavLink to={"/"}>Home</NavLink>
             </li>
             <li className="ml-7 text-purple-600 font-bold navHover">
-              <NavLink to="/about">About</NavLink>
+              <NavLink to={"/about"}>About</NavLink>
             </li>
 
             <li className="ml-7 text-purple-600 font-bold navHover">
-              <NavLink to="/products">Products</NavLink>
+              <NavLink to={"/products"}>Products</NavLink>
             </li>
 
             <li className="ml-7 text-purple-600 font-bold navHover">

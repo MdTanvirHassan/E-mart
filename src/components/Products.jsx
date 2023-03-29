@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
+import { NavLink } from "react-router-dom";
 
 const Products = () => {
   const [data, setData] = useState([]);
@@ -46,7 +47,7 @@ const Products = () => {
   const ShowProducts = () => {
     return (
       <>
-        <div className="flex items-center justify-center py-4 md:py-8 flex-wrap">
+        <div className="flex items-center justify-center py-8 md:py-8 flex-wrap">
           <button
             onClick={()=>setFilter(data)}
             type="button"
@@ -78,11 +79,11 @@ const Products = () => {
             Jewelery
           </button>
         </div>
-        <div className="container grid  md:grid-cols-3 gap-4 mx-auto px-8 py-5">
+        <div className="container grid  md:grid-cols-4 gap-4 mx-auto px-8 py-5">
           {filter.map((product) => {
             return (
               <>
-                <div key={product.id} className="m-auto bg-white p-2 rounded-md shadow-xl">
+                <div className="m-auto bg-white p-2 rounded-md shadow-xl">
                   <a href="/#">
                     <img
                       className="rounded-t-lg h-[300px] w-[300px] p-8"
@@ -104,11 +105,12 @@ const Products = () => {
                     <p className="mb-3 font-normal text-gray-700 ">
                       ${product.price}
                     </p>
-                    <button
-                      href="/#"
+                    <NavLink
+                      type="button"
+                      to={`/products/${product.id}`}
                       className="inline-flex w-full justify-center px-3  py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
                       Buy Now
-                    </button>
+                    </NavLink>
                   </div>
                 </div>
               </>

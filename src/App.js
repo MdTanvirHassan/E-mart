@@ -1,8 +1,9 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Footer from './components/Footer';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
+import Product from './components/Product';
 import Products from './components/Products';
 
 
@@ -11,11 +12,12 @@ function App() {
     <div className="">
       <Navbar/>
       <Routes>
-        <Route exact path='/' component={<Home />} />
-        <Route  path='/products' component={<Products />} />
+        <Route exact path="/" element={<Home />} />
+        <Route path='/products' element={<Products />} />
+        <Route path='/products/:id' element={<Product />} />
       </Routes>
-      <Home/>
       <Products/>
+      
       <Footer/>
     </div>
   );
