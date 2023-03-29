@@ -75,14 +75,17 @@ const Navbar = () => {
             </li>
           </ul>
           {/* Hamburger Icon */}
+          <div className="flex lg:hidden">
+          <AiOutlineShoppingCart className="text-3xl text-purple-600 m-auto" />
           <div
             style={{ color: `${linkColor}` }}
             onClick={handleNav}
-            className="lg:hidden mx-2 rounded-full bg-gray-600 p-2">
+            className="lg:hidden mx-2 rounded-full bg-gray-100 p-2">
             <AiOutlineMenu size={25} className="text-purple-600 font-bold" />
           </div>
+          </div>
         </div>
-        <div className="flex space-x-4 text-purple-600 font-bold">
+        <div className="hidden md:flex space-x-4 text-purple-600 font-bold">
           <div className="m-auto">
             <BiSearchAlt className="text-2xl" />
           </div>

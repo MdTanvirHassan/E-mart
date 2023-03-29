@@ -34,13 +34,13 @@ const Product = () => {
   const ShowProduct = () => {
     return (
       <>
-        <section className="text-gray-600 body-font overflow-hidden">
+        <section className="text-gray-600 m-auto overflow-hidden">
           <div className="container my-24 m-auto">
             <div className="md:ml-10 p-5 grid md:grid-cols-2 gap-8 mx-auto bg-white shadow-xl rounded-md">
               <div className="w-full md:w-[400px] m-auto">
               <img
                 alt={product.title}
-                className=" px-5 w-full lg:h-auto h-64 object-cover object-center rounded m-auto"
+                className="px-14 md:px-5 w-full lg:h-auto h-64 object-fill object-center rounded m-auto"
                 src={product.image}
                 
               />
