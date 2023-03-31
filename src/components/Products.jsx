@@ -51,7 +51,7 @@ const Products = () => {
   const ShowProducts = () => {
     return (
       <>
-        <div className="flex items-center justify-center py-8 md:py-8 flex-wrap">
+        <div className="flex items-center justify-center m-auto py-8 md:py-8 flex-wrap">
           <button
             onClick={() => filterProduct("all")}
             type="button"
@@ -83,7 +83,7 @@ const Products = () => {
             Jewelery
           </button>
         </div>
-        <div className="container grid  md:grid-cols-4 gap-4 mx-auto px-8 py-5">
+        <div className="container grid  md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 justify-center items-center gap-4 m-auto px-8 py-5">
           {filter.map((product) => {
             return (
               <>

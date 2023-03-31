@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import {
   AiOutlineClose,
@@ -17,7 +18,7 @@ const Navbar = () => {
   const [navBg, setNavBg] = useState("transparent");
   const [linkColor, setLinkColor] = useState("#FFFFFF");
   // const [position, setPosition] = useState('fixed')
-
+  const state = useSelector((state)=>state.handleCart)
   const handleNav = () => {
     setNav(!nav);
   };
@@ -44,7 +45,7 @@ const Navbar = () => {
           ? "fixed w-full h-20 shadow-lg shadow-gray-700 z-[100] ease-in-out duration-300"
           : "fixed w-full h-20 z-[100]"
       }>
-      <div className="flex justify-between items-center w-full h-full px-2 2xl:px-16">
+      <div className="flex container m-auto justify-between items-center w-full h-full px-2 2xl:px-16">
         <NavLink to="/">
           <div className="">
             {/* <img
@@ -104,8 +105,8 @@ const Navbar = () => {
           <div >
             <NavLink to="/cart" className="flex space-x-2 border px-3 py-2 hover:bg-black hover:text-white rounded-md ">
               <AiOutlineShoppingCart className="text-2xl" />
-              <span>Cart</span>
-            </NavLink>{" "}
+              <span>Cart({ state})</span>
+            </NavLink>
           </div>
         </div>
       </div>

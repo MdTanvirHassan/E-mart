@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import {ADD_TO_CART} from "../redux/action"
 import Skeleton from "react-loading-skeleton";
 import { NavLink, useParams } from "react-router-dom";
 import {FaStar} from "react-icons/fa"
@@ -7,6 +9,11 @@ const Product = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
+  const addProduct =(product)=>{
+    dispatch(ADD_TO_CART(product));
+  }
 
   useEffect(() => {
     const getProducts = async () => {
@@ -62,7 +69,9 @@ const Product = () => {
                   
                 </div>
                 <div className="flex space-x-4">
-                <button className="flex  text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                <button 
+                onClick={() =>addProduct}
+                className="flex  text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
                     Add To Cart
                   </button>
                   <NavLink to="/cart" className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
