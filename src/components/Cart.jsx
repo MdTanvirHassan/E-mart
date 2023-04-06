@@ -23,11 +23,11 @@ const Cart = () => {
         </div>
         <hr className="my-4 border-b-2 border-blue-500" />
         {carts && Object.keys(carts).length > 0 ? (
-          carts.map((item) => {
+          carts.map((item, index) => {
             return (
-              <>
+              <div key={index}>
                 <div className="flex mb-4 justify-between items-center mx-auto bg-white px-8 shadow-xl rounded-md">
-                  <div className="" key={item.id}>
+                  <div className="" >
                     <img
                       src={`${item.image}`}
                       className="w-[150px] h-[150px] "
@@ -44,17 +44,18 @@ const Cart = () => {
                     <h6 className="mb-0">${item.price}</h6>
                   </div>
                   <div className="col-md-1 col-lg-1 col-xl-1 text-end">
-                    
-                      <span
-                        onClick={() => dispatch(RemoveCartItem(item.id))}
-                        className=""
-                        style={{ cursor: "pointer" }}>X</span>
-                    
+                    <span
+                      onClick={() => dispatch(RemoveCartItem(item.id))}
+                      className=""
+                      style={{ cursor: "pointer" }}
+                    >
+                      X
+                    </span>
                   </div>
                 </div>
 
                 <hr className="my-4  border-blue-300" />
-              </>
+              </div>
             );
           })
         ) : (
