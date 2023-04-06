@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { AddToCart, fetchAllProducts } from "../Redux/reducers/ProductSlice";
+import { AddToCart, fetchAllProducts } from "../redux/reducers/ProductSlice";
 import Skeleton from "react-loading-skeleton";
 import { NavLink, useParams } from "react-router-dom";
 import {FaStar} from "react-icons/fa"
