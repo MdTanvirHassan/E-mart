@@ -9,7 +9,7 @@ html {
 
 @layer base {
   body {
-    @apply tracking-wide bg-[#ecf0f3] 
+    @apply tracking-wide bg-orange-50 
     /* bg-[#ecf0f3] text-[#1f2937] text-[#ecf0f3]*/;
   }
 

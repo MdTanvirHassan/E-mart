@@ -1,55 +1,78 @@
-import { useEffect,useState } from "react"
-import React from 'react'
-import { NavLink, useParams } from "react-router-dom";
-//import {FaStar} from "react-icons/fa"
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { RemoveCartItem } from "../Redux/reducers/ProductSlice.js";
 
 const Cart = () => {
-    const [product, setProduct] = useState([]);
-    const { id } = useParams();
-    useEffect(() => {
-        const getProducts = async () => {
-          //setLoading(true);
-          const response = await fetch(`https://fakestoreapi.com/products/${id}`);
-          setProduct(await response.json());
-         // setLoading(false);
-        };
-        getProducts();
-      }, [id]);
+  const dispatch = useDispatch();
+  const { carts } = useSelector((state) => state.products);
+
+  const totalPrice =
+    carts.length > 0
+      ? carts.reduce((acc, a) => {
+          return acc + a.price;
+        }, 0)
+      : 0;
+
   return (
-    <div> 
-        <h1>Cart</h1>
-         <div key={product.id} className="m-auto bg-white p-2 rounded-md shadow-xl flex">
-                  <NavLink to={`products/${product.id}`}>
+    <>
+      <section className="container py-20 m-auto h-full ">
+        <div className="flex justify-between my-10">
+          <h1 className="font-bold mb-0 text-black ">Shopping Cart</h1>
+          <h6 className="mb-0 text-muted">items: {carts.length} </h6>
+        </div>
+        <hr className="my-4 border-b-2 border-blue-500" />
+        {carts && Object.keys(carts).length > 0 ? (
+          carts.map((item) => {
+            return (
+              <>
+                <div className="flex mb-4 justify-between items-center mx-auto bg-white px-8 shadow-xl rounded-md">
+                  <div className="" key={item.id}>
                     <img
-                      className="rounded-t-lg h-[300px] w-[300px] p-8"
-                      src={product.image}
-                      alt={product.title}
-                      height="250px"
+                      src={`${item.image}`}
+                      className="w-[150px] h-[150px] "
+                      alt="Cotton T-shirt"
                     />
-                  </NavLink>
-                  
-                  <div className="p-5 m-auto text-center bg-white shadow-lg rounded-md">
-                    <h6 className="text-gray-400 uppercase text-sm">
-                      {product.category}
-                    </h6>
-                    <a href="/#">
-                      <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-600 ">
-                        {product.title}
-                      </h5>
-                    </a>
-                    <p className="mb-3 font-normal text-gray-700 ">
-                      {product.qty} X {product.price}  = ${product.qty * product.price}
-                    </p>
-                    <NavLink
-                      type="button"
-                      to={`/products/${product.id}`}
-                      className="inline-flex w-full justify-center px-3  py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                      Buy Now
-                    </NavLink>
+                  </div>
+                  <div className="">
+                    <h6 className="text-black mb-0">{item.title}</h6>
+                  </div>
+                  <div className="col-md-3 col-lg-3 col-xl-2 flex">
+                    <h6 className="text-black mb-0">{item.category}</h6>
+                  </div>
+                  <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                    <h6 className="mb-0">${item.price}</h6>
+                  </div>
+                  <div className="col-md-1 col-lg-1 col-xl-1 text-end">
+                    
+                      <span
+                        onClick={() => dispatch(RemoveCartItem(item.id))}
+                        className=""
+                        style={{ cursor: "pointer" }}>X</span>
+                    
                   </div>
                 </div>
-    </div>
-  )
-}
 
-export default Cart
+                <hr className="my-4  border-blue-300" />
+              </>
+            );
+          })
+        ) : (
+          <h2 className="text-center">Cart is Empty! Shop Now</h2>
+        )}
+
+        <div className="pt-5 flex">
+          <h6 className="mb-0">
+            <Link to={"/"}>
+              <i className="fas fa-long-arrow-alt-left me-2"></i>
+              Back to shop
+            </Link>
+          </h6>
+          <h6 className="mx-auto">Total Price : ${totalPrice}</h6>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default Cart;

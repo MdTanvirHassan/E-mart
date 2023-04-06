@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import {ADD_TO_CART} from "../redux/action"
+import { AddToCart, fetchAllProducts } from "../Redux/reducers/ProductSlice";
 import Skeleton from "react-loading-skeleton";
 import { NavLink, useParams } from "react-router-dom";
 import {FaStar} from "react-icons/fa"
@@ -11,10 +11,12 @@ const Product = () => {
   const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
-  const addProduct =(product)=>{
-    dispatch(ADD_TO_CART(product));
-  }
+  useEffect(() => {
+    dispatch(fetchAllProducts());
+  }, [dispatch]);
+  
 
+  // const { products, loading } = useSelector((state) => state.products);
   useEffect(() => {
     const getProducts = async () => {
       setLoading(true);
@@ -41,7 +43,7 @@ const Product = () => {
   const ShowProduct = () => {
     return (
       <>
-        <section className="text-gray-600 m-auto overflow-hidden">
+        <section className="text-gray-600 m-auto overflow-hidden"  key={product.id}>
           <div className="container my-24 m-auto">
             <div className="md:ml-10 p-5 grid md:grid-cols-2 gap-8 mx-auto bg-white shadow-xl rounded-md">
               <div className="w-full md:w-[400px] m-auto">
@@ -70,8 +72,9 @@ const Product = () => {
                 </div>
                 <div className="flex space-x-4">
                 <button 
-                onClick={() =>addProduct}
-                className="flex  text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                onClick={() => dispatch(AddToCart(product.id))}
+                className="flex  text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+                key={product.id}>
                     Add To Cart
                   </button>
                   <NavLink to="/cart" className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">

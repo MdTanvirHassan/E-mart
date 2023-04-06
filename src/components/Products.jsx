@@ -7,7 +7,6 @@ const Products = () => {
   const [filter, setFilter] = useState([]);
   const [loading, setLoading] = useState(false);
 
-
   useEffect(() => {
     const getProducts = async () => {
       setLoading(true);
@@ -22,15 +21,14 @@ const Products = () => {
     };
     getProducts();
   }, []);
-  
 
   const Loading = () => {
     return (
       <>
         <div className="container grid grid-cols-3 gap-4 mx-auto px-8 py-5">
-          <Skeleton height={350}/>
-          <Skeleton height={350}/>
-          <Skeleton height={350}/>
+          <Skeleton height={350} />
+          <Skeleton height={350} />
+          <Skeleton height={350} />
         </div>
         Loading......
       </>
@@ -59,25 +57,25 @@ const Products = () => {
             All categories
           </button>
           <button
-            onClick={()=>filterProduct("men's clothing")}
+            onClick={() => filterProduct("men's clothing")}
             type="button"
             className="text-gray-900 border border-white hover:border-gray-200  bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 mb-3 ">
             Men's Collection
           </button>
           <button
-            onClick={()=>filterProduct("women's clothing")}
+            onClick={() => filterProduct("women's clothing")}
             type="button"
             className="text-gray-900 border border-white hover:border-gray-200  bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 mb-3 ">
             Women's Collection
           </button>
           <button
-            onClick={()=>filterProduct("electronics")}
+            onClick={() => filterProduct("electronics")}
             type="button"
             className="text-gray-900 border border-white hover:border-gray-200  bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 mb-3 ">
             Electronics
           </button>
           <button
-            onClick={()=>filterProduct("jewelery")}
+            onClick={() => filterProduct("jewelery")}
             type="button"
             className="text-gray-900 border border-white hover:border-gray-200  bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center mr-3 mb-3 ">
             Jewelery
@@ -86,38 +84,38 @@ const Products = () => {
         <div className="container grid  md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 justify-center items-center gap-4 m-auto px-8 py-5">
           {filter.map((product) => {
             return (
-              <>
-                <div key={product.id} className="m-auto bg-white p-2 rounded-md shadow-xl">
-                  <NavLink to={`products/${product.id}`}>
-                    <img
-                      className="rounded-t-lg h-[300px] w-[300px] p-8"
-                      src={product.image}
-                      alt={product.title}
-                      height="250px"
-                    />
+              <div
+                key={product.id}
+                className="m-auto bg-white p-2 rounded-md shadow-xl">
+                <NavLink to={`products/${product.id}`}>
+                  <img
+                    className="rounded-t-lg h-[300px] w-[300px] p-8"
+                    src={product.image}
+                    alt={product.title}
+                    height="250px"
+                  />
+                </NavLink>
+                <hr />
+                <div className="p-5 m-auto text-center bg-white shadow-lg rounded-md">
+                  <h6 className="text-gray-400 uppercase text-sm">
+                    {product.category}
+                  </h6>
+                  <a href="/#">
+                    <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-600 ">
+                      {product.title.substring(0, 12)}...
+                    </h5>
+                  </a>
+                  <p className="mb-3 font-normal text-gray-700 ">
+                    ${product.price}
+                  </p>
+                  <NavLink
+                    type="button"
+                    to={`/products/${product.id}`}
+                    className="inline-flex w-full justify-center px-3  py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                    Buy Now
                   </NavLink>
-                  <hr />
-                  <div className="p-5 m-auto text-center bg-white shadow-lg rounded-md">
-                    <h6 className="text-gray-400 uppercase text-sm">
-                      {product.category}
-                    </h6>
-                    <a href="/#">
-                      <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-600 ">
-                        {product.title.substring(0, 12)}
-                      </h5>
-                    </a>
-                    <p className="mb-3 font-normal text-gray-700 ">
-                      ${product.price}
-                    </p>
-                    <NavLink
-                      type="button"
-                      to={`/products/${product.id}`}
-                      className="inline-flex w-full justify-center px-3  py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                      Buy Now
-                    </NavLink>
-                  </div>
                 </div>
-              </>
+              </div>
             );
           })}
         </div>

@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap md:text-left text-center order-first">
             <div className="lg:w-1/5 md:w-1/2 w-full px-4">
-              <h1 className="text-6xl">E-mart</h1>
+              <h1 className="text-6xl text-red-500">E-<span className="text-purple-500">mart</span></h1>
               <p>
                 Lorem ipsum dolor sit amet consectetur.
               </p>
