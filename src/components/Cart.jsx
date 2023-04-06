@@ -27,27 +27,27 @@ const Cart = () => {
           carts.map((item, index) => {
             return (
               <div key={index}>
-                <div className="flex mb-4 justify-between items-center mx-auto bg-white px-8 shadow-xl rounded-md">
-                  <div className="" >
+                <div className="grid grid-cols-6 gap-0 mb-4 justify-between items-center mx-auto bg-white px-8 shadow-xl rounded-md">
+                  <div className="col-span-1" >
                     <img
                       src={`${item.image}`}
-                      className="w-[150px] h-[150px] "
+                      className="w-[150px] h-[150px] text-center "
                       alt="Cotton T-shirt"
                     />
                   </div>
-                  <div className="">
-                    <h6 className="text-black mb-0">{item.title}</h6>
+                  <div className="m-auto col-span-2">
+                    <h6 className="text-black text-center mb-0">{item.title}</h6>
                   </div>
-                  <div className="col-md-3 col-lg-3 col-xl-2 flex">
-                    <h6 className="text-black mb-0">{item.category}</h6>
+                  <div className=" flex m-auto col-span-1">
+                    <h6 className="text-black text-center mb-0">{item.category}</h6>
                   </div>
-                  <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                    <h6 className="mb-0">${item.price}</h6>
+                  <div className="m-auto col-span-1">
+                    <h6 className="mb-0 text-center">${item.price}</h6>
                   </div>
-                  <div className="col-md-1 col-lg-1 col-xl-1 text-end">
+                  <div className="m-auto col-span-1">
                     <span
                       onClick={() => dispatch(RemoveCartItem(item.id))}
-                      className=""
+                      className="text-center"
                       style={{ cursor: "pointer" }}
                     >
                       X
@@ -70,7 +70,7 @@ const Cart = () => {
               Back to shop
             </Link>
           </h6>
-          <h6 className="mx-auto">Total Price : ${totalPrice}</h6>
+          <h6 className="mx-auto">Total Price : ${totalPrice.toFixed(2)}</h6>
         </div>
       </section>
     </>

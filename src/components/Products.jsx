@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { AddToCart, fetchAllProducts } from "../redux/reducers/ProductSlice";
 
 const Products = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAllProducts());
+  }, [dispatch]);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -110,9 +117,10 @@ const Products = () => {
                   </p>
                   <NavLink
                     type="button"
-                    to={`/products/${product.id}`}
+                    onClick={() => dispatch(AddToCart(product.id))}
+                    key={product.id}
                     className="inline-flex w-full justify-center px-3  py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                    Buy Now
+                    Add to Cart
                   </NavLink>
                 </div>
               </div>
